@@ -76,12 +76,14 @@ const renderImagesGrid = images => (
    <section className="container d-none d-md-block my-3">
       <div className="row no-gutters">
          {images.map(image => (
-            <div key={image.sizes.src} className="col-md-3 h-100">
-               <Img
-                  {...image}
-                  className="img-fluid h-100"
-                  style={{ objectFit: 'cover' }}
-               />
+            <div key={image.sizes.src} className="col-md-3">
+               <div className="h-100">
+                  <Img
+                     {...image}
+                     className="img-fluid h-100"
+                     objectFit="cover"
+                  />
+               </div>
             </div>
          ))}
       </div>
