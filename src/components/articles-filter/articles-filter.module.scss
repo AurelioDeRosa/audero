@@ -1,4 +1,4 @@
-@import '../../layouts/main';
+@import '../../main';
 @import 'node_modules/bootstrap/scss/forms';
 @import 'node_modules/bootstrap/scss/list-group';
 .react-tagsinput {
@@ -27,6 +27,7 @@
    @extend .mb-sm-0;
    @extend .mr-sm-2;
    @extend .py-md-0;
+   @extend .text-nowrap;
    a:before {
       content: ' ×';
    }
@@ -37,6 +38,9 @@
    @extend .border-0;
    min-width: 130px;
    width: 100%;
+   &:focus {
+      outline: 0;
+   }
 }
 
 .container {

@@ -1,7 +1,9 @@
 import AuthoredBook from '../components/authored-book';
+import Layout from '../components/layout';
 import PageTitle from '../components/page-title';
 import React from 'react';
 import ReviewedBook from '../components/reviewed-book';
+import { graphql } from 'gatsby';
 
 const getCoverPath = (covers, coverName) => {
    const cover = covers.find(cover => cover.node.base === coverName);
@@ -27,45 +29,47 @@ const renderIntro = () => (
    </div>
 );
 
-const BooksPage = ({ data }) => (
-   <main>
-      <article>
-         {renderIntro()}
+const BooksPage = ({ data, location }) => (
+   <Layout location={location}>
+      <main>
+         <article>
+            {renderIntro()}
 
-         <section className="container island">
-            <h3 className="h2">Authored books</h3>
-            <div className="mt-5">
-               {data.authored.edges.map((book, index) => (
-                  <AuthoredBook
-                     {...book.node}
-                     key={book.node.title}
-                     className={index > 0 ? 'mt-5' : ''}
-                     hasCoverOnLeft={index % 2 === 0}
-                     cover={getCoverPath(data.covers.edges, book.node.cover)}
-                  />
-               ))}
-            </div>
-         </section>
-
-         <section className="container island">
-            <h3 className="h2">Books reviewed</h3>
-            <div className="row mt-5">
-               {data.reviewed.edges.map((book, index) => (
-                  <div
-                     className={`col-lg-6 ${index > 0 ? 'mt-3' : ''} mt-lg-0`}
-                     key={book.node.title}
-                  >
-                     <ReviewedBook
+            <section className="container island">
+               <h3 className="h2">Authored books</h3>
+               <div className="mt-5">
+                  {data.authored.edges.map((book, index) => (
+                     <AuthoredBook
                         {...book.node}
-                        key={book.node.name}
+                        key={book.node.title}
+                        className={index > 0 ? 'mt-5' : ''}
+                        hasCoverOnLeft={index % 2 === 0}
                         cover={getCoverPath(data.covers.edges, book.node.cover)}
                      />
-                  </div>
-               ))}
-            </div>
-         </section>
-      </article>
-   </main>
+                  ))}
+               </div>
+            </section>
+
+            <section className="container island">
+               <h3 className="h2">Books reviewed</h3>
+               <div className="row mt-5">
+                  {data.reviewed.edges.map((book, index) => (
+                     <div
+                        className={`col-lg-6 ${index > 0 ? 'mt-3' : ''} mt-lg-0`}
+                        key={book.node.title}
+                     >
+                        <ReviewedBook
+                           {...book.node}
+                           key={book.node.name}
+                           cover={getCoverPath(data.covers.edges, book.node.cover)}
+                        />
+                     </div>
+                  ))}
+               </div>
+            </section>
+         </article>
+      </main>
+   </Layout>
 );
 
 export default BooksPage;

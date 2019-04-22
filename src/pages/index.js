@@ -1,4 +1,5 @@
 import Employer from '../components/employer/employer';
+import Layout from '../components/layout';
 import Link from '../components/link';
 import PersonalHighlight from '../components/personal-highlight';
 import PullQuote from '../components/pull-quote';
@@ -6,6 +7,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import TechnologyTag from '../components/technology-tag/technology-tag';
 import PageIcon from '../components/page-icon/page-icon';
+import { graphql } from 'gatsby';
 
 import AurelioPicture from '../images/aurelio-de-rosa-headshot.jpg';
 
@@ -191,14 +193,14 @@ const renderTestimonials = testimonials => (
    </section>
 );
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location }) => {
    const lastArticle = data.lastArticle.edges[0].node;
    const lastBook = data.lastBook.edges[0].node;
    const lastProject = data.lastProject.edges[0].node;
    const lastTalk = getLastTalk(data.talks.edges).node;
 
    return (
-      <div>
+      <Layout location={location}>
          {renderIntro(data.site.siteMetadata.title)}
 
          <main>
@@ -208,7 +210,7 @@ const IndexPage = ({ data }) => {
 
             {lastEndeavors(lastArticle, lastBook, lastProject, lastTalk)}
          </main>
-      </div>
+      </Layout>
    );
 };
 

@@ -60,11 +60,11 @@ const ArticlesFilter = ({
             </div>
             <div className="col-12 col-md">
                <TagsInput
-                  className={`${styles['react-tagsinput']}`}
-                  focusedClassName={styles['react-tagsinput--focused']}
+                  className={styles.reactTagsinput}
+                  focusedClassName={styles.reactTagsinputFocused}
                   inputProps={{
                      autoComplete: 'off',
-                     className: styles['react-tagsinput-input'],
+                     className: styles.reactTagsinputInput,
                      disabled: tagsSelected.length >= MAX_TAGS ? 'disabled' : '',
                      id: 'articles-filter',
                      name: 'q',
@@ -82,8 +82,8 @@ const ArticlesFilter = ({
                      </div>
                   )}
                   tagProps={{
-                     className: styles['react-tagsinput-tag'],
-                     classNameRemove: styles['react-tagsinput-remove']
+                     className: styles.reactTagsinputTag,
+                     classNameRemove: styles.reactTagsinputRemove
                   }}
                   value={tagsSelected}
                />

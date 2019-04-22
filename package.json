@@ -14,23 +14,26 @@
    "description": "Aurelio De Rosa's website",
    "homepage": "https://www.audero.it",
    "dependencies": {
-      "gatsby": "^1.9.255",
-      "gatsby-image": "^1.0.47",
-      "gatsby-link": "^1.6.41",
-      "gatsby-plugin-google-analytics": "^1.0.31",
-      "gatsby-plugin-manifest": "^1.0.21",
-      "gatsby-plugin-offline": "^1.0.15",
-      "gatsby-plugin-react-helmet": "^2.0.11",
-      "gatsby-plugin-sass": "^1.0.26",
-      "gatsby-plugin-sharp": "^1.6.43",
-      "gatsby-source-filesystem": "^1.5.34",
-      "gatsby-transformer-sharp": "^1.6.23",
-      "gatsby-transformer-yaml": "^1.5.16",
-      "react-autosuggest": "^9.3.4",
+      "gatsby": "^2.3.25",
+      "gatsby-image": "^2.0.39",
+      "gatsby-plugin-google-analytics": "^2.0.18",
+      "gatsby-plugin-manifest": "^2.0.29",
+      "gatsby-plugin-offline": "^2.0.25",
+      "gatsby-plugin-react-helmet": "^3.0.12",
+      "gatsby-plugin-sass": "^2.0.11",
+      "gatsby-plugin-sharp": "^2.0.35",
+      "gatsby-source-filesystem": "^2.0.29",
+      "gatsby-transformer-sharp": "^2.1.18",
+      "gatsby-transformer-yaml": "^2.1.11",
+      "node-sass": "^4.11.0",
+      "react": "^16.8.6",
+      "react-autosuggest": "^9.4.3",
+      "react-dom": "^16.8.6",
       "react-helmet": "^5.2.0",
-      "react-image-gallery": "^0.8.7",
+      "react-image-gallery": "^0.8.16",
       "react-tagsinput": "^3.19.0",
-      "reactstrap": "^5.0.0"
+      "reactstrap": "^8.0.0",
+      "sharp": "^0.22.0"
    },
    "scripts": {
       "build": "gatsby build",
@@ -39,8 +42,9 @@
       "test": "exit 0"
    },
    "devDependencies": {
-      "bootstrap": "^4.1.0",
-      "prettier": "^1.12.1",
-      "react-markdown": "^3.3.0"
+      "bootstrap": "^4.3.1",
+      "jquery": "^3.4.0",
+      "prettier": "^1.17.0",
+      "react-markdown": "^4.0.8"
    }
 }

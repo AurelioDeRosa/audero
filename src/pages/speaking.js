@@ -1,9 +1,11 @@
 import Img from 'gatsby-image';
 import ImageGallery from 'react-image-gallery';
+import Layout from '../components/layout';
 import Link from '../components/link';
 import PageTitle from '../components/page-title';
 import React from 'react';
 import Talk from '../components/talk/talk';
+import { graphql } from 'gatsby';
 
 const IMAGES_DATA = [
    {
@@ -74,10 +76,9 @@ const renderImagesGrid = images => (
    <section className="container d-none d-md-block my-3">
       <div className="row no-gutters">
          {images.map(image => (
-            <div key={image.sizes.src} className="col-md-3">
+            <div key={image.sizes.src} className="col-md-3 h-100">
                <Img
                   {...image}
-                  outerWrapperClassName="h-100"
                   className="img-fluid h-100"
                   style={{ objectFit: 'cover' }}
                />
@@ -100,55 +101,57 @@ const renderGallery = images => (
    </section>
 );
 
-const SpeakingPage = ({ data }) => (
-   <main>
-      <article>
-         {renderIntro()}
+const SpeakingPage = ({ data, location }) => (
+   <Layout location={location}>
+      <main>
+         <article>
+            {renderIntro()}
 
-         {renderImagesGrid(
-            IMAGES_DATA.map(image => {
-               return {
-                  sizes: {
-                     ...getImageData(data.images.edges, image.name, 'grid')
-                  },
-                  alt: image.alt
-               };
-            })
-         )}
+            {renderImagesGrid(
+               IMAGES_DATA.map(image => {
+                  return {
+                     sizes: {
+                        ...getImageData(data.images.edges, image.name, 'grid')
+                     },
+                     alt: image.alt
+                  };
+               })
+            )}
 
-         {renderGallery(
-            IMAGES_DATA.map(image => {
-               const imageData = getImageData(
-                  data.images.edges,
-                  image.name,
-                  'gallery'
-               );
+            {renderGallery(
+               IMAGES_DATA.map(image => {
+                  const imageData = getImageData(
+                     data.images.edges,
+                     image.name,
+                     'gallery'
+                  );
 
-               return {
-                  ...imageData,
-                  original: imageData.src,
-                  originalAlt: image.alt,
-                  description: image.alt
-               };
-            })
-         )}
+                  return {
+                     ...imageData,
+                     original: imageData.src,
+                     originalAlt: image.alt,
+                     description: image.alt
+                  };
+               })
+            )}
 
-         <section className="container island">
-            <div className="row justify-content-center">
-               <section className="col-md-8">
-                  <h3>Past talks</h3>
-                  {data.talks.edges.map((talk, index) => (
-                     <Talk
-                        key={talk.node.title}
-                        className="border-bottom pb-3 mt-5"
-                        {...talk.node}
-                     />
-                  ))}
-               </section>
-            </div>
-         </section>
-      </article>
-   </main>
+            <section className="container island">
+               <div className="row justify-content-center">
+                  <section className="col-md-8">
+                     <h3>Past talks</h3>
+                     {data.talks.edges.map((talk, index) => (
+                        <Talk
+                           key={talk.node.title}
+                           className="border-bottom pb-3 mt-5"
+                           {...talk.node}
+                        />
+                     ))}
+                  </section>
+               </div>
+            </section>
+         </article>
+      </main>
+   </Layout>
 );
 
 export default SpeakingPage;
@@ -180,11 +183,11 @@ export const query = graphql`
             node {
                base
                childImageSharp {
-                  grid: sizes(maxWidth: 300, quality: 100) {
-                     ...GatsbyImageSharpSizes
+                  grid: fluid(maxWidth: 300, quality: 100) {
+                     ...GatsbyImageSharpFluid
                   }
-                  gallery: sizes(maxWidth: 550, maxHeight: 350, quality: 100) {
-                     ...GatsbyImageSharpSizes
+                  gallery: fluid(maxWidth: 550, maxHeight: 350, quality: 100) {
+                     ...GatsbyImageSharpFluid
                   }
                }
             }

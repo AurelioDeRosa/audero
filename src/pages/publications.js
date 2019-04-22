@@ -1,9 +1,11 @@
 import Article from '../components/article';
 import ArticlesFilter from '../components/articles-filter/articles-filter';
+import Layout from '../components/layout';
 import Link from '../components/link';
 import PageTitle from '../components/page-title';
 import Publication from '../components/publication/publication';
 import React from 'react';
+import { graphql } from 'gatsby';
 
 const SHOW_MORE_ITEMS = 9;
 
@@ -107,51 +109,53 @@ export default class PublicationsPage extends React.Component {
 
    render() {
       return (
-         <main>
-            <article>
-               {renderIntro()}
+         <Layout location={this.props.location}>
+            <main>
+               <article>
+                  {renderIntro()}
 
-               <section className="container island">
-                  <h3>Articles</h3>
-                  <p>
-                     When not busy writing code, I love to share my knowledge by
-                     writing technical articles for leading networks, such as{' '}
-                     <Link to="http://www.sitepoint.com/author/aderosa/">
-                        SitePoint
-                     </Link>{' '}
-                     and{' '}
-                     <Link to="http://tutsplus.com/authors/aurelio-de-rosa">
-                        TutsPlus
-                     </Link>, and magazines, such as{' '}
-                     <Link to="http://www.creativebloq.com/net-magazine">
-                        Net Magazine
-                     </Link>{' '}
-                     and{' '}
-                     <Link to="https://www.phparch.com/">php[architect]</Link>.
-                     To date, I've written{' '}
-                     <b>{this.props.data.articles.totalCount}</b> articles on
-                     websites or magazines not owned by me:
-                  </p>
+                  <section className="container island">
+                     <h3>Articles</h3>
+                     <p>
+                        When not busy writing code, I love to share my knowledge by
+                        writing technical articles for leading networks, such as{' '}
+                        <Link to="http://www.sitepoint.com/author/aderosa/">
+                           SitePoint
+                        </Link>{' '}
+                        and{' '}
+                        <Link to="http://tutsplus.com/authors/aurelio-de-rosa">
+                           TutsPlus
+                        </Link>, and magazines, such as{' '}
+                        <Link to="http://www.creativebloq.com/net-magazine">
+                           Net Magazine
+                        </Link>{' '}
+                        and{' '}
+                        <Link to="https://www.phparch.com/">php[architect]</Link>.
+                        To date, I've written{' '}
+                        <b>{this.props.data.articles.totalCount}</b> articles on
+                        websites or magazines not owned by me:
+                     </p>
 
-                  <div className="row justify-content-end my-5">
-                     <ArticlesFilter
-                        className="col-md-10 col-lg-6"
-                        onChange={tags => this._onFilterChanged(tags)}
-                        tagsAvailable={this.state.tagsAvailable.filter(
-                           tag => !this.state.tagsSelected.includes(tag)
-                        )}
-                        tagsSelected={this.state.tagsSelected}
-                     />
-                  </div>
+                     <div className="row justify-content-end my-5">
+                        <ArticlesFilter
+                           className="col-md-10 col-lg-6"
+                           onChange={tags => this._onFilterChanged(tags)}
+                           tagsAvailable={this.state.tagsAvailable.filter(
+                              tag => !this.state.tagsSelected.includes(tag)
+                           )}
+                           tagsSelected={this.state.tagsSelected}
+                        />
+                     </div>
 
-                  {renderVisibleArticles(this.state.visibleArticles)}
+                     {renderVisibleArticles(this.state.visibleArticles)}
 
-                  {this._renderButtons()}
-               </section>
+                     {this._renderButtons()}
+                  </section>
 
-               {renderPublications(this.props.data.publications)}
-            </article>
-         </main>
+                  {renderPublications(this.props.data.publications)}
+               </article>
+            </main>
+         </Layout>
       );
    }
 
