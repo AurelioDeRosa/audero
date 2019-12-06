@@ -11,14 +11,14 @@ module.exports = {
          resolve: 'gatsby-plugin-google-analytics',
          options: {
             trackingId: 'UA-6265682-14',
-            head: false,
+            head: false
          }
       },
       {
          resolve: 'gatsby-source-filesystem',
          options: {
             name: 'src',
-            path: `${__dirname}/src`,
+            path: `${__dirname}/src`
          }
       },
       {
@@ -31,10 +31,17 @@ module.exports = {
             background_color: '#FFFFFF',
             theme_color: '#F8F9FA',
             display: 'minimal-ui',
-            icon: 'static/images/audero-logo.png',
-         },
+            icon: 'static/images/audero-logo.png'
+         }
       },
-      'gatsby-plugin-offline',
+      {
+         resolve: 'gatsby-plugin-offline',
+         options: {
+            workboxConfig: {
+               navigateFallbackBlacklist: [/^\/blog/, /^\/demo/]
+            }
+         }
+      },
       {
          resolve: 'gatsby-plugin-sass',
          options: {
