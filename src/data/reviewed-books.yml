@@ -11,13 +11,14 @@
    published: 2015-03-27
    ISBN: '9780987467485'
 -
-   cover: coming-soon-cover.jpg
-   url:
+   cover: algorithms-and-data-structures-in-action.jpg
+   url: https://www.manning.com/books/algorithms-and-data-structures-in-action
    title: Algorithms and Data Structures in Action
-   description: Coming soon...
+   description: |
+      Algorithms and Data Structures in Action introduces you to a diverse range of algorithms you'll use in web applications, systems programming, and data manipulation. Chapter-by-chapter, the book expands on the basic algorithms you'll already know to give you a better selection of solutions to different programming problems.
    author: Marcello La Rocca
    publisher: Manning
    language: English
    pages:
    published:
-   ISBN:
+   ISBN: '9781617295485'
