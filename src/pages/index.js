@@ -2,7 +2,6 @@ import Employer from '../components/employer/employer';
 import Layout from '../components/layout';
 import Link from '../components/link';
 import PersonalHighlight from '../components/personal-highlight';
-import PullQuote from '../components/pull-quote';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import TechnologyTag from '../components/technology-tag/technology-tag';
@@ -179,20 +178,6 @@ const lastEndeavors = (lastArticle, lastBook, lastProject, lastTalk) => (
    </div>
 );
 
-const renderTestimonials = testimonials => (
-   <section>
-      <h2>Nice things people said about me</h2>
-
-      <ul>
-         {testimonials.map(testimonial => (
-            <li key={testimonial.node.author}>
-               <PullQuote {...testimonial.node} />
-            </li>
-         ))}
-      </ul>
-   </section>
-);
-
 const IndexPage = ({ data, location }) => {
    const lastArticle = data.lastArticle.edges[0].node;
    const lastBook = data.lastBook.edges[0].node;
@@ -247,15 +232,6 @@ export const query = graphql`
             node {
                name
                publicURL
-            }
-         }
-      }
-      testimonials: allTestimonialsYaml {
-         edges {
-            node {
-               author
-               picture
-               quote
             }
          }
       }
