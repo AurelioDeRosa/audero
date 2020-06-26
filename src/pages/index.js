@@ -42,10 +42,11 @@ const renderIntro = siteTitle => (
                <h1 className="display-3">{siteTitle}</h1>
 
                <p className="lead mt-3">
-                  Senior Front End Engineer at Facebook. In love with HTML, CSS,
-                  Sass, JavaScript, and PHP. Member of the{' '}
-                  <Link to="https://jquery.org/team/">jQuery team</Link>. Expert
-                  of JavaScript and HTML5 APIs.
+                  Software Engineer Manager at Facebook. In love with Web
+                  technologies: HTML, CSS, JavaScript, and PHP.
+                  Member of the{' '}
+                  <Link to="https://jquery.org/team/">jQuery team</Link>.
+                  Expert of JavaScript and HTML5 APIs.
                </p>
             </div>
          </div>
